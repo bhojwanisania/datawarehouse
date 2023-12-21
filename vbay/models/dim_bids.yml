@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: dim_bids
+    description: "A dimension table containing bids data."
+    columns:
+      - name: bid_id
+        description: "The unique identifier for a bid."
+        tests:
+          - unique
+          - not_null
+      - name: bid_datetime
+        description: "The date and time when the bid was placed."
+        tests:
+          - not_null
+      - name: bid_amount
+        description: "The monetary amount of the bid."
+      - name: bid_status
+        description: "The status of the bid (e.g., 'accepted', 'rejected')."

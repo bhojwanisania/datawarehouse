@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: fact_bid
+    description: "A fact table containing bids transactions."
+    columns:
+      - name: user_id_key
+        description: "Foreign key to the user dimension."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_users')
+              field: user_id
+      - name: item_id_key
+        description: "Foreign key to the item dimension."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_items')
+              field: item_id
+      - name: bid_id_key
+        description: "Foreign key to the bid dimension."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_bids')
+              field: bid_id
+      - name: bid_status
+        description: "The status of the bid in the fact table."
+      - name: bid_datetime
+        description: "The datetime of the bid in the fact table."
+      - name: bid_amount
+        description: "The amount of the bid in the fact table."

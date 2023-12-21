@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: dim_items
+    description: "A dimension table containing item data."
+    columns:
+      - name: item_id
+        description: "The unique identifier for an item."
+        tests:
+          - unique
+          - not_null
+      - name: item_name
+        description: "The name of the item."
+        tests:
+          - not_null
+      - name: item_type
+        description: "The type or category of the item."
+      - name: item_description
+        description: "A detailed description of the item."
+      - name: item_sold
+        description: "Indicator if the item is sold or not (1 for sold, 0 for not sold)."
+      - name: item_soldamount
+        description: "The amount for which the item was sold."
