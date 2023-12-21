@@ -1,0 +1,5 @@
+version: 2
+
+models:
+  - name: obt_fact_bid
+    description: The fact bid table combined with all of its outrigger dimensions into one bit table. 

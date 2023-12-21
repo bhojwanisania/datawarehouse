@@ -1,0 +1,61 @@
+version: 2
+
+
+sources:  
+  - name : conformed
+    database: raw
+    schema: conformed
+
+    tables:
+     - name: DateDimension
+       columns: 
+        - name: DateKey
+          tests: 
+           - unique
+  - name: vBay
+    database: raw
+    schema: vBay
+
+    tables:
+      - name: vb_bid_status_lookup
+        columns:
+          - name: bid_status
+            tests:
+              - unique
+      - name: vb_bids
+        tests:
+        - dbt_utils.unique_combination_of_columns:
+            combination_of_columns:
+              - bid_id
+              - bid_user_id
+              - bid_item_id
+              - bid_status
+      - name: vb_item_types_lookup
+        columns:
+          - name: item_type
+            tests:
+              - unique
+      - name: vb_items
+        tests:
+        - dbt_utils.unique_combination_of_columns:
+            combination_of_columns:
+              - item_id
+              - item_type
+              - item_seller_user_id
+              - item_buyer_user_id
+      - name: vb_rating_astypes_lookup
+        columns:
+          - name: rating_astype
+            tests:
+              - unique
+      - name: vb_users
+        tests:
+        - dbt_utils.unique_combination_of_columns:
+            combination_of_columns:
+              - user_id
+              - user_zip_code
+      - name: vb_zip_codes
+        columns:
+          - name: zip_code
+            tests:
+              - unique
